@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <title>Curious Cows</title>
+</head>
+
+<body>
+
+  <div class="header">
+    <a href="/">
+      <h1>Curious Cows</h1>
+    </a>
+  </div>
+
+  <div class="main">
+
+    <div class="form {{ display_form }}">
+      <form method="post" action="{% url 'index' %}">
+        {% csrf_token %}
+
+        <div class="label-input">
+          <label for="ingredients">Ingredient(s)</label><br>
+          <input id="ingredients" type="text" name="ingredients">
+          <p class="feedback {{ ingredient_feedback }}">Please enter at least one ingredient.</p><br>
+
+          <label for="style">Type of dish (ex. entree, appetizer, dessert, snack)</label><br>
+          <input id="style" type="text" name="style" value="{{ sticky_style }}"><br>
+
+          <label for="flavor">Flavor Profile</label><br>
+          <input id="flavor" type="text" name="flavor" value="{{ sticky_flavor }}"><br>
+
+          <label for="diet">Diet Preferences (ex. high fiber, vegetarian)</label><br>
+          <input id="diet" type="text" name="diet" value="{{ sticky_diet }}"><br>
+
+          <label for="budget">Budget</label><br>
+          <input id="budget" type="text" name="budget" value="{{ sticky_budget }}">
+        </div>
+
+        <input type="submit" class="submit" name="generate" value="Generate Recipe">
+
+      </form>
+    </div>
+
+    <div class="form {{ display_confirm }}">
+      <h3>Ingredients: {{ ingredients }}<br><br>
+        Recipe: {{ recipe }}</h3>
+    </div>
+
+  </div>
+
+
+  <div class="footer">
+    <h4>&#169; 2024 Curious Cows</h4>
+  </div>
+
+
+</body>
+
+</html>

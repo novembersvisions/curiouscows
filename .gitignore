@@ -1,0 +1,6 @@
+.env
+.DS_Store
+ingredient_word2vec.model
+curiouscows/db.sqlite3
+*.pyc
+*.csv
